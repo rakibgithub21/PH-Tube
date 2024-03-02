@@ -18,9 +18,17 @@ const displayAllCategories = (data) => {
 
         // console.log(card);
         const newButton = document.createElement('button');
-        newButton.classList = `btn  btn-ghost bg-slate-700 text-white text-lg`;
+        newButton.classList = `category-btn btn  btn-ghost bg-slate-700 text-white text-lg`;
         newButton.innerText = card.category;
-        newButton.addEventListener('click', () => fetchDataByCategories(card.category_id))
+        newButton.addEventListener('click', () => {
+            fetchDataByCategories(card.category_id)
+            const allbtn = document.querySelectorAll('.category-btn');
+            for (const btn of allbtn) {
+                btn.classList.remove('bg-red-400')
+            };
+            newButton.classList.add('bg-red-400')
+
+        })
         btnContainer.appendChild(newButton);
     });
 }
